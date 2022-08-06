@@ -7,13 +7,17 @@
 
 6, 1, 33 -> [6, 1, 33]
 */
-void PrintArray(int[] inputArray)
+void PrintArray(string[] inputArray)
 {
     
     int i= 0;
     while (i < inputArray.Length)
     {
-        Console.Write($" {inputArray[i]} ");
+        if (i<inputArray.Length && i!=inputArray.Length-1)
+        {
+            Console.Write($"{inputArray[i]} ,");
+        }
+        else Console.Write($"{inputArray[i]}");
         i++;
     }
 }
@@ -23,7 +27,7 @@ Console.WriteLine("введите несколько чисел через зя�
 string test=Console.ReadLine();
 string[] array =test.Split(',');
 int [] array_result = new int [array.Length];
-//Console.WriteLine(test);
+//Console.WriteLine("["+test+"]");
 if (test.Contains(" ") || String.IsNullOrEmpty(test) ) 
 {
     Console.WriteLine("в строке пробелы или отсутствуют цифры, введите верно");
@@ -35,6 +39,7 @@ else
     { 
         array_result[i] = int.Parse(array[i].ToString());
         flag=true;
+        
     }
 }
 
@@ -42,7 +47,7 @@ else
 if (flag==true)
 {
     Console.Write($" [");
-    PrintArray(array_result);
+    PrintArray(array);
     Console.Write($"] ");
     
 }
