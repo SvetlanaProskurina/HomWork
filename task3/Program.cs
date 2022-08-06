@@ -9,7 +9,7 @@
 */
 void PrintArray(int[] inputArray)
 {
-    //int count = col.Length;
+    
     int i= 0;
     while (i < inputArray.Length)
     {
@@ -19,12 +19,16 @@ void PrintArray(int[] inputArray)
 }
 
 bool flag=false;
-Console.WriteLine("введите нескольк чисел через зяпятую");
+Console.WriteLine("введите несколько чисел через зяпятую");
 string test=Console.ReadLine();
 string[] array =test.Split(',');
 int [] array_result = new int [array.Length];
-
-if (test.Contains("") || test.Contains(" ")) Console.WriteLine("в строке пробелы или отсутствуют цифры, введите верно");
+//Console.WriteLine(test);
+if (test.Contains(" ") || String.IsNullOrEmpty(test) ) 
+{
+    Console.WriteLine("в строке пробелы или отсутствуют цифры, введите верно");
+    flag=false;
+}
 else
 {
     for (int i=0 ;i<array.Length ;i++ )
@@ -34,11 +38,12 @@ else
     }
 }
 
+
 if (flag==true)
 {
-    Console.Write($" [ ");
+    Console.Write($" [");
     PrintArray(array_result);
-    Console.Write($" ] ");
+    Console.Write($"] ");
     
 }
 
